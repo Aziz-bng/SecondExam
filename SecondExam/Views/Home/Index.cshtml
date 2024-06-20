@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SecondExam.Models.Exam>
+
+<form asp-action="Index" method="post">
+    @foreach (var exam in Model)
+    {
+        <div class="exam-section">
+            <h2>@exam.Title</h2>
+            <div class="questions-section">
+                @foreach (var question in exam.Questions)
+                {
+                    <div class="question">
+                        <h4>@question.Text</h4>
+                        <ul>
+
+                            @foreach (var answer in question.Answers)
+                            {
+                                                                
+                                <div>
+                                    <input type="radio" name="@answer.Id" value="@answer.Id" />
+                                    <label>@answer.AnswerText</label>
+                                </div>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    <button type="submit">Submit</button>
+</form>
+
+
